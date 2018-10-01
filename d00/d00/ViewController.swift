@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var saveFirstOperant:Int = 0
     var savedOperand:Bool = false
     var selectedOperator:Bool = false
+    var canPressNumbers:Bool = true
     
     
     @IBOutlet weak var NumberLabel: UILabel!
@@ -50,9 +51,12 @@ class ViewController: UIViewController {
     
     @IBAction func Numbers(_ sender: UIButton)
     {
-        number = checknumber(nb:Int(sender.tag - 1), param:number)
-        selectedOperator = false
-        NumberLabel.text = String(number)
+        if (canPressNumbers == true)
+        {
+            number = checknumber(nb:Int(sender.tag - 1), param:number)
+            selectedOperator = false
+            NumberLabel.text = String(number)
+        }
     }
    
     func checkIfNeedCalcul() -> Void {
@@ -62,19 +66,19 @@ class ViewController: UIViewController {
             {
                 case 1:
                     let result = saveFirstOperant.addingReportingOverflow(number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Addition")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Add")
                     break
                 case 2:
                     let result = saveFirstOperant.subtractingReportingOverflow(number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Substraction")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Subs")
                     break
                 case 3:
                     let result = saveFirstOperant.multipliedReportingOverflow(by:number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Multiplication")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Mult")
                     break
                 default:
                     let result = saveFirstOperant.dividedReportingOverflow(by:number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Divition")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Div")
                     break
             }
         }
@@ -116,7 +120,9 @@ class ViewController: UIViewController {
     {
         if (isOverflow == true)
         {
-            NumberLabel.text = str + " Overflow"
+            NumberLabel.text = str + " Overflow, press AC"
+            canPressNumbers = false
+            selectedOperator = true
             number = 0
         }
         else
@@ -134,19 +140,19 @@ class ViewController: UIViewController {
             {
                 case 1:
                     let result = saveFirstOperant.addingReportingOverflow(number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Addition")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Add")
                     break
                 case 2:
                     let result = saveFirstOperant.subtractingReportingOverflow(number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Substraction")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Subs")
                     break
                 case 3:
                     let result = saveFirstOperant.multipliedReportingOverflow(by:number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Multiplication")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Mult")
                     break
                 default:
                     let result = saveFirstOperant.dividedReportingOverflow(by:number)
-                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Divition")
+                    checkTupleOverflow(result:result.0, isOverflow:result.1, str:"Div")
                     break
             }
             savedOperand = false
@@ -162,6 +168,7 @@ class ViewController: UIViewController {
             savedTypeOperator = 0
             savedOperand = false
             selectedOperator = false
+            canPressNumbers = true
             number = 0
             NumberLabel.text = ""
         }
