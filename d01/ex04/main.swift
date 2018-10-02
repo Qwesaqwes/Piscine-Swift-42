@@ -1,5 +1,5 @@
-// let deck = Deck(needShuffle:false)
-let deck = Deck(needShuffle:true)
+let deck = Deck(needShuffle:false)
+// let deck = Deck(needShuffle:true)
 var out:Card?
 
 for _ in 0..<53
@@ -24,4 +24,7 @@ print ("\nYou put in the discard deck if the card you draw is already in your ha
 deck.fold(c:card1)
 deck.fold(c:card2)
 print ("Card in the Discard")
-print (deck.getDiscard() + "\n")
+print (deck.getDiscard())
+
+print ("Cards in your hand after FOLD:")
+print (deck.getOuts())
