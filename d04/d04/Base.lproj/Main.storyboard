@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QGX-v5-kvs">
-                                <rect key="frame" x="0.0" y="105" width="375" height="562"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="110" id="8nI-BA-HlK" customClass="TweetCell" customModule="d04" customModuleProvider="target">
@@ -77,13 +77,13 @@
                                 </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBs-Kn-3dg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="-5" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Tweets" id="ocl-RZ-fWd"/>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mqQ-v6-l6D">
-                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="39" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="JaA-Bd-vX7" id="JYa-9k-7Mf"/>
@@ -92,14 +92,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QGX-v5-kvs" firstAttribute="top" secondItem="mqQ-v6-l6D" secondAttribute="bottom" constant="5" id="3EE-8X-rxw"/>
+                            <constraint firstItem="QGX-v5-kvs" firstAttribute="top" secondItem="mqQ-v6-l6D" secondAttribute="bottom" id="3EE-8X-rxw"/>
                             <constraint firstItem="mqQ-v6-l6D" firstAttribute="leading" secondItem="4nI-4S-Ev7" secondAttribute="leading" id="JNR-kE-l9P"/>
                             <constraint firstItem="yBs-Kn-3dg" firstAttribute="leading" secondItem="mqQ-v6-l6D" secondAttribute="leading" id="OID-EC-r2d"/>
                             <constraint firstItem="QGX-v5-kvs" firstAttribute="leading" secondItem="4nI-4S-Ev7" secondAttribute="leading" id="RX0-pW-dt4"/>
                             <constraint firstItem="4nI-4S-Ev7" firstAttribute="trailing" secondItem="mqQ-v6-l6D" secondAttribute="trailing" id="b1z-tM-Xae"/>
                             <constraint firstItem="4nI-4S-Ev7" firstAttribute="trailing" secondItem="QGX-v5-kvs" secondAttribute="trailing" id="bJ2-8O-Gnr"/>
                             <constraint firstItem="QGX-v5-kvs" firstAttribute="bottom" secondItem="4nI-4S-Ev7" secondAttribute="bottom" id="ix3-yf-cip"/>
-                            <constraint firstItem="4nI-4S-Ev7" firstAttribute="top" secondItem="QGX-v5-kvs" secondAttribute="top" constant="-85" id="nWX-wH-SAM"/>
+                            <constraint firstItem="4nI-4S-Ev7" firstAttribute="top" secondItem="QGX-v5-kvs" secondAttribute="top" constant="-75" id="nWX-wH-SAM"/>
                             <constraint firstItem="mqQ-v6-l6D" firstAttribute="top" secondItem="yBs-Kn-3dg" secondAttribute="bottom" id="sOZ-P8-ssc"/>
                             <constraint firstItem="yBs-Kn-3dg" firstAttribute="trailing" secondItem="mqQ-v6-l6D" secondAttribute="trailing" id="x48-Sh-seh"/>
                         </constraints>

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, APITwitterDelegate, UITableViewDelegate, UITableViewDataSource
+class ViewController: UIViewController, APITwitterDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
     @IBOutlet weak var TweetTableView: UITableView!
     @IBOutlet weak var SearchBar: UISearchBar!
     var TweetsArray : [Tweet] = []
+    var stringToSearch:String = "ecole 42"
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("count", TweetsArray.count)
@@ -41,8 +42,27 @@ class ViewController: UIViewController, APITwitterDelegate, UITableViewDelegate,
     
     func TweetError(tweetError: NSError)
     {
-        
+        let alert = UIAlertController(title: "Error", message: "Connect to TwitterAPI.", preferredStyle:UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+//        print(searchText)
+        stringToSearch = searchText
+    }
+    
+    func searchBarSearchButtonClicked(_: UISearchBar)
+    {
+//        print ("enter button was pressed")
+        if (stringToSearch != "")
+        {
+           viewDidLoad()
+        }
+    }
+
     
     
     override func viewDidLoad()
@@ -66,7 +86,7 @@ class ViewController: UIViewController, APITwitterDelegate, UITableViewDelegate,
         {
             data, response, error in
             if let err = error {
-                print (err)
+                self.TweetError(tweetError: err as NSError)
             }
             else if let d = data {
                 do {
@@ -74,11 +94,11 @@ class ViewController: UIViewController, APITwitterDelegate, UITableViewDelegate,
 //                        print (dic)
 //                        print (dic["access_token"]!)
                         let res = APIController(token: dic["access_token"] as! String, delegate: self)
-                        res.searchString(strToSearch: "ecole 42")
+                        res.searchString(strToSearch: self.stringToSearch)
                     }
                 }
                 catch (let err) {
-                    print (err)
+                    self.TweetError(tweetError: err as NSError)
                 }
             }
         }

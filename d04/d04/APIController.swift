@@ -35,7 +35,7 @@ class APIController
             data, response, error in
             if let err = error
             {
-                print (err)
+                self.delegate?.TweetError(tweetError: err as NSError)
             }
             else if let d = data {
                 do
@@ -72,7 +72,7 @@ class APIController
                 }
                 catch (let err)
                 {
-                    print (err)
+                    self.delegate?.TweetError(tweetError: err as NSError)
                 }
             }
         }
