@@ -37,16 +37,14 @@ class ViewController: UIViewController
     
     @IBAction func dragGesture(_ sender: UIPanGestureRecognizer)
     {
-ls
-        
         if let k = formView
         {
-//            self.view.bringSubview(toFront: k)
-//            let translation = sender.translation(in: k)
-//            k.center = CGPoint(x: k.center.x + translation.x, y: k.center.y + translation.y)
-//            sender.setTranslation(CGPoint.zero, in: self.view)
-            let location =  sender.location(in: view)
-            k.drag(loc:location)
+            self.view.bringSubview(toFront: k)
+            let translation = sender.translation(in: k)
+            k.center = CGPoint(x: k.center.x + translation.x, y: k.center.y + translation.y)
+            sender.setTranslation(CGPoint.zero, in: self.view)
+//            let location =  sender.location(in: view)
+//            k.drag(loc:location)
 //            k.position
             
         }
