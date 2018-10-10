@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="d07" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="230-5J-L8q">
+                                <rect key="frame" x="20" y="299" width="335" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Response" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59b-0N-i7P">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4xM-gH-xcY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Das-Wc-8Tm">
+                                        <rect key="frame" x="0.0" y="30" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXO-gn-rc3">
+                                        <rect key="frame" x="0.0" y="60" width="335" height="30"/>
+                                        <state key="normal" title="Make Request"/>
+                                        <connections>
+                                            <action selector="makeRequestRecasAI:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jjc-KS-vWl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="59b-0N-i7P" firstAttribute="leading" secondItem="230-5J-L8q" secondAttribute="leading" id="ROz-QX-1Rd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Das-Wc-8Tm" secondAttribute="trailing" id="Wlj-2u-ufr"/>
+                                    <constraint firstItem="nXO-gn-rc3" firstAttribute="leading" secondItem="230-5J-L8q" secondAttribute="leading" id="aTc-oB-hXT"/>
+                                    <constraint firstAttribute="trailing" secondItem="nXO-gn-rc3" secondAttribute="trailing" id="c79-gN-4ZA"/>
+                                    <constraint firstItem="Das-Wc-8Tm" firstAttribute="leading" secondItem="230-5J-L8q" secondAttribute="leading" id="cgL-7f-CxG"/>
+                                    <constraint firstAttribute="trailing" secondItem="59b-0N-i7P" secondAttribute="trailing" id="iCr-h9-flU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="230-5J-L8q" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0b5-Uj-aaK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="230-5J-L8q" secondAttribute="trailing" constant="20" id="1mF-Cw-h9F"/>
+                            <constraint firstItem="230-5J-L8q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hoo-bn-v9B"/>
+                            <constraint firstItem="230-5J-L8q" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="mD5-CN-kfW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="questionText" destination="Das-Wc-8Tm" id="OjS-SJ-ufv"/>
+                        <outlet property="responseLabel" destination="59b-0N-i7P" id="XAZ-DR-kas"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+</document>
