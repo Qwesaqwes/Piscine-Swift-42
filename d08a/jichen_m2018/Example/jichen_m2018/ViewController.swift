@@ -17,13 +17,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let article = ArticleManager()
-        let art = article.newArticle(title:"titi", content:"testdeTITI", language:"en", image:nil)
+        let art = article.newArticle(title:"titi", content:"testdeTITI", language:"fr", image:nil)
         article.save()
         var a = article.getAllArticles()
+        print("\n-------------------ADD NEW ARTICLE ( TITI )------------------\n")
         print (a)
+        
+        let art1 = article.getArticles(withLang: "fr")
+        print("\n-------------------PRINT ARTICLES WITH LANG SELECTED------------------\n")
+        print (art1)
+        
         article.removeArticle(article: art)
-//        a = article.getAllArticles()
-//        print (a)
+        a = article.getAllArticles()
+        article.save()
+        print("\n-------------------ERASE NEW ARTICLE ( TITI )------------------\n")
+        print (a)
     }
 
     override func didReceiveMemoryWarning() {

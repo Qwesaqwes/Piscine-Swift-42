@@ -53,9 +53,31 @@ public class ArticleManager
         return []
     }
     
-    public func getArticles(withLang lang : String)
+    public func getArticles(withLang lang : String) -> [Article]
     {
         //return all the articles with the language selected
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Article")
+        fetchRequest.returnsObjectsAsFaults = false
+        var arrayArticle:[Article] = []
+        do
+        {
+            if let results = try context.fetch(fetchRequest) as? [Article]
+            {
+                for res in results
+                {
+                    if (String(describing: res.language).compare(lang).rawValue == 0)
+                    {
+                        arrayArticle.append(res)
+                    }
+                }
+                return arrayArticle
+            }
+        }
+        catch
+        {
+            print ("There was a fetch error!")
+        }
+        return []
     }
     
     public func getArticles(containString str : String)
