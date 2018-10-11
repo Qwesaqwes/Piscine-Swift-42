@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'jichen_m2018_Example' do
+  pod 'jichen_m2018', :path => '../'
+
+  target 'jichen_m2018_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

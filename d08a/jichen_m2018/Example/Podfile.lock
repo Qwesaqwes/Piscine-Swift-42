@@ -1,0 +1,16 @@
+PODS:
+  - jichen_m2018 (0.1.0)
+
+DEPENDENCIES:
+  - jichen_m2018 (from `../`)
+
+EXTERNAL SOURCES:
+  jichen_m2018:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  jichen_m2018: a1137c96aeed6cf10457c4fef5546bca9e921fa8
+
+PODFILE CHECKSUM: 454079c605e5045ca019a7de5f2a8eed6406e54e
+
+COCOAPODS: 1.5.3

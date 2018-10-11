@@ -1,0 +1,6 @@
+framework module Pods_jichen_m2018_Tests {
+  umbrella header "Pods-jichen_m2018_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
