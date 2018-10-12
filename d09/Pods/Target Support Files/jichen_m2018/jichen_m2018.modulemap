@@ -1,0 +1,6 @@
+framework module jichen_m2018 {
+  umbrella header "jichen_m2018-umbrella.h"
+
+  export *
+  module * { export * }
+}

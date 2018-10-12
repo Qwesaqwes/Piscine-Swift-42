@@ -1,0 +1,11 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'd09' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for d09
+  pod 'jichen_m2018', :path => './MyPod/'
+  # pod 'jichen_m2018', :git => 'vogsphere@vogsphere.42.fr:intra/2018/activities/piscine_swift_ios_day_08/jichen-m'
+end
