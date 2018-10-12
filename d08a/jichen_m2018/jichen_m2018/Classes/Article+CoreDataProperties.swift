@@ -23,8 +23,8 @@ extension Article {
     @NSManaged public var language: String?
     @NSManaged public var title: String?
     
-//    override var description:String
-//    {
-//        return ("title: \(String(describing: title))\ncontent: \(String(describing: content))\nlanguage: \(String(describing: language))\ndate of creation: \(String(describing: dateOfCreation))\ndate of modification: \(String(describing: dateOfModification))\nimage: \(String(describing: image))")
-//    }
+    override public var description: String
+    {
+        return ("title: \(String(describing: title ?? ""))\ncontent: \(String(describing: content ?? ""))\nlanguage: \(String(describing: language ?? ""))\ndate of creation: \(String(describing: dateOfCreation ?? Date() as NSDate))\ndate of modification: \(String(describing: dateOfModification ?? Date() as NSDate))\nimage: \(String(describing: image ?? nil))\n\n")
+    }
 }

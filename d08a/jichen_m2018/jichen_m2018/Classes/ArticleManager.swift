@@ -16,12 +16,6 @@ public class ArticleManager
     public func newArticle(title:String, content:String, language:String, image:NSData?) -> Article
     {
         //Create a new article
-//        guard let entity = NSEntityDescription.entity(forEntityName: "article", in: context)
-//        else
-//        {
-//            fatalError("Could not find entity description")
-//        }
-
         let doc = Date()
         let dom = Date()
         let art = Article(context: context)
@@ -59,15 +53,19 @@ public class ArticleManager
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Article")
         fetchRequest.returnsObjectsAsFaults = false
         var arrayArticle:[Article] = []
+        
         do
         {
             if let results = try context.fetch(fetchRequest) as? [Article]
             {
                 for res in results
                 {
-                    if (String(describing: res.language).compare(lang).rawValue == 0)
+                    if let r = res.language
                     {
-                        arrayArticle.append(res)
+                        if (r == lang)
+                        {
+                            arrayArticle.append(res)
+                        }
                     }
                 }
                 return arrayArticle
@@ -80,9 +78,47 @@ public class ArticleManager
         return []
     }
     
-    public func getArticles(containString str : String)
+    public func getArticles(containString str : String) -> [Article]
     {
         //return all the articles with the string selected
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Article")
+        fetchRequest.returnsObjectsAsFaults = false
+        var arrayArticle:[Article] = []
+        var appended:Bool = false
+        
+        
+        do
+        {
+            if let results = try context.fetch(fetchRequest) as? [Article]
+            {
+                let tmpstr = str.lowercased()
+                for res in results
+                {
+                    appended = false
+                    if let title = res.title
+                    {
+                        if title.lowercased().range(of:tmpstr) != nil
+                        {
+                            arrayArticle.append(res)
+                            appended = true
+                        }
+                    }
+                    if let content = res.content
+                    {
+                        if content.lowercased().range(of: tmpstr) != nil && appended == false
+                        {
+                            arrayArticle.append(res)
+                        }
+                    }
+                }
+                return arrayArticle
+            }
+        }
+        catch
+        {
+            print ("There was a fetch error!")
+        }
+        return []
     }
     
     public func removeArticle(article : Article)
