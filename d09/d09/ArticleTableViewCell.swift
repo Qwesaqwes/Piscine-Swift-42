@@ -19,9 +19,12 @@ class ArticleTableViewCell: UITableViewCell
     @IBOutlet weak var dom: UILabel!
     @IBOutlet weak var imgHeight: NSLayoutConstraint!
     
+    var art:Article?
+    
     
     func displayArticle(article:Article)
     {
+        art = article
         title.text = article.title
 //        print (article.description)
         detail.text = article.content
@@ -43,7 +46,6 @@ class ArticleTableViewCell: UITableViewCell
         {
             img.isHidden = false
             imgHeight.constant = 180
-            img.contentMode = .scaleAspectFit
             img.image = UIImage(data: article.image! as Data)
         }
         else

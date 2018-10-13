@@ -34,6 +34,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            articles.removeArticle(article: art[indexPath.row])
+            articles.save()
+            art = articles.getArticles(withLang: Locale.current.languageCode!)
+            tableViewArticle.reloadData()
+            tableViewArticle.endUpdates()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if (segue.identifier == "addArticleSegue")
@@ -43,11 +55,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 vc.articles = articles
             }
         }
+        
+        if segue.identifier == "editArticleSegue"
+        {
+            if let vc = segue.destination as? AddArticleViewController
+            {
+                if let artCell = sender as? ArticleTableViewCell
+                {
+                    vc.art = artCell.art
+                    vc.articles = articles
+                    vc.edit = true
+                }
+            }
+        }
     }
     
     @IBAction func addArticleUnwindSegue(segue: UIStoryboardSegue)
     {
-        art = articles.getAllArticles()
+        art = articles.getArticles(withLang: Locale.current.languageCode!)
         tableViewArticle.reloadData()
         tableViewArticle.endUpdates()
     }
@@ -57,17 +82,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-       navigationItem.hidesBackButton = true
-      
-        art = articles.getAllArticles()
-        
-//        let _ = articles.newArticle(title: "test", content: "content of Test", language: "fr", image: nil)
-//        articles.save()
-//        let a = articles.getAllArticles()
-//        print (art)
-        
-//        articles.removeAllArticles()
-        
+        navigationItem.hidesBackButton = true
+        art = articles.getArticles(withLang: Locale.current.languageCode!)
     }
 
     override func didReceiveMemoryWarning() {

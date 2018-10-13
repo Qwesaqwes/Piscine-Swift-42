@@ -13,6 +13,8 @@ class AddArticleViewController: UIViewController, UIImagePickerControllerDelegat
 {
     var articles:ArticleManager?
     let pickerController = UIImagePickerController()
+    var art:Article?
+    var edit:Bool = false
     @IBOutlet weak var titleText: UITextField!
     @IBOutlet weak var detailText: UITextView!
     @IBOutlet weak var img: UIImageView!
@@ -46,20 +48,32 @@ class AddArticleViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func doneButton(_ sender: UIBarButtonItem)
     {
-        if (titleText.text != "" && detailText.text != "")
+        let langStr = Locale.current.languageCode
+        if (titleText.text != "" && detailText.text != "" && edit == false)
         {
-            // TODO : need to create new article and save
-            let langStr = Locale.current.languageCode
             if let i = img.image
             {
                let _ = articles?.newArticle(title: titleText.text!, content: detailText.text!, language: langStr!, image: UIImagePNGRepresentation(i) as NSData?)
-                articles?.save()
             }
             else
             {
                 let _ = articles?.newArticle(title: titleText.text!, content: detailText.text!, language: langStr!, image: nil)
-                articles?.save()
             }
+            articles?.save()
+            performSegue(withIdentifier: "addArticleUnwindSegue", sender: "")
+        }
+        else if (titleText.text != "" && detailText.text != "" && edit == true)
+        {
+            if let i = img.image
+            {
+                articles?.editArticle(article: art!, title: titleText.text!, content: detailText.text!, image: UIImagePNGRepresentation(i) as NSData?)
+            }
+            else
+            {
+                articles?.editArticle(article: art!, title: titleText.text!, content: detailText.text!, image: nil)
+            }
+            articles?.save()
+            performSegue(withIdentifier: "addArticleUnwindSegue", sender: "")
         }
         else
         {
@@ -67,7 +81,6 @@ class AddArticleViewController: UIViewController, UIImagePickerControllerDelegat
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         }
-        performSegue(withIdentifier: "addArticleUnwindSegue", sender: "")
     }
     
     override func viewDidLoad() {
@@ -82,6 +95,17 @@ class AddArticleViewController: UIViewController, UIImagePickerControllerDelegat
         titleText?.layer.cornerRadius = 5.0
         
         pickerController.delegate = self
+        
+        if let a = art
+        {
+            titleText.text = a.title
+            detailText.text = a.content
+            if let data = a.image
+            {
+               img.contentMode = .scaleAspectFit
+               img.image = UIImage(data:data as Data,scale:1.0)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

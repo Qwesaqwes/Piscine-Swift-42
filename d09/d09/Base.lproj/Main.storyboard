@@ -70,7 +70,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NqH-r7-NPc">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NqH-r7-NPc">
                                                     <rect key="frame" x="20" y="54.5" width="335" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="180" id="ZSN-wH-7Y5"/>
@@ -121,6 +121,7 @@
                                             <outlet property="img" destination="NqH-r7-NPc" id="kxy-vS-RDu"/>
                                             <outlet property="imgHeight" destination="ZSN-wH-7Y5" id="gIN-3J-MD3"/>
                                             <outlet property="title" destination="0bP-HA-Knj" id="cc7-6b-XEJ"/>
+                                            <segue destination="DBc-Ev-Usy" kind="show" identifier="editArticleSegue" id="g8g-MR-1fM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -250,4 +251,7 @@
             <point key="canvasLocation" x="1317.5999999999999" y="-82.3088455772114"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="g8g-MR-1fM"/>
+    </inferredMetricsTieBreakers>
 </document>
